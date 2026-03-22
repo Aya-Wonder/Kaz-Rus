@@ -1,0 +1,21 @@
+  model_path = "abilmansplus/whisper-turbo-ksc2"  # model to fine-tune
+  processor_path = "openai/whisper-large-v3-turbo"  # this can stay constant, processor never changes, converts audio into mel-spectrogram
+  train_batch_size = 4
+  grad_accum_steps = 2
+  learning_rate = 1e-5
+  warmup_steps = 20000
+  weight_decay = 0.01
+  fp16 = True
+  bf16 = False
+  num_epochs = 3
+  dataloader_num_workers = 8
+  dataloader_prefetch_factor = 4
+  sample_rate = 16000  # for audio
+  max_audio_len = 30  # Maximum audio length in seconds
+  gradient_checkpointing = True
+  freeze_encoder = False  # if True, only Decoder is fine-tuned, saves a lot of time and GPU memory on less powerful machines
+  ## LoRA params
+  use_lora = True  # LoRA tecnique to reduce the number of trainable parameteres
+  lora_r = 64  # rank
+  lora_alpha = lora_r * 2
+  lora_dropout = 0.05
